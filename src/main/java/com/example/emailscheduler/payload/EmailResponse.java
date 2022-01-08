@@ -1,5 +1,10 @@
 package com.example.emailscheduler.payload;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class EmailResponse {
 
     private boolean success;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -30,7 +31,7 @@ public class EmailSchedulerController {
     public ResponseEntity<EmailResponse> scheduleEmail(@Valid @RequestBody EmailRequest emailRequest) {
 
         try {
-
+                emailRequest.setDataTime(LocalDateTime.now());
             ZonedDateTime dateTime = ZonedDateTime.of(emailRequest.getDataTime(), emailRequest.getTimeZone());
 
             if(dateTime.isBefore(ZonedDateTime.now())) {
